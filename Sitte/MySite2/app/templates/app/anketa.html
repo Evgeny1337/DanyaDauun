@@ -1,0 +1,42 @@
+{% extends "app/layout.html" %}
+{% block content %}
+{% if form != None %}
+    <br><h2>Отправьте пожалуйста заролненную анкету</h2>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <label for="{{form.name.id_for_label}}">{{form.name.label}}:</label>
+            {{form.name}}<br><br>
+            <label for="{{form.city.id_for_label}}">{{form.city.label}}:</label>
+            {{form.city}}<br><br>
+            <label for="{{form.role.id_for_label}}">{{form.role.label}}:</label>
+            {{form.role}}<br><br>
+            <label for="{{form.computer.id_for_label}}">{{form.computer.label}}:</label>
+            {{form.computer}}<br><br>
+            <label for="{{form.adverst.id_for_label}}">{{form.adverst.label}}:</label>
+            {{form.adverst}}<br><br>
+            <label for="{{form.notice.id_for_label}}">{{form.notice.label}}:</label>
+            {{form.notice}}<br><br>
+            <label for="{{form.email.id_for_label}}">{{form.email.label}}:</label>
+            {{form.email}}<br><br>
+            <label for="{{form.message.id_for_label}}">{{form.message.label}}:</label>
+            {{form.message}}<br><br>
+            <input type="submit" value="Отправить" />
+        </form>
+    </div>
+{% else %}
+    <br /><h2>Благодарим за предоставленную информацию</h2>
+    <h3>Вы сообщили о себе следуюшее:</h3>
+    <ul>
+        <li><span>Имя:</span>{{data.name}}</li>
+        <li><span>Город:</span>{{data.city}}</li>
+        <li><span>Преднозначение вашего сайта:</span>{{data.role}}</li>
+        <li><span>Под какую ОС разрабатывается сайт:</span>{{data.computer}}</li>
+        <li><span>Желание размещать рекламу на сайте:</span>{{data.adverst}}</li>
+        <li><span>Согласие на рассылку уведомлений:</span>{{data.notice}}</li>
+        <li><span>E-Mail:</span>{{data.email}}</li>
+        <li><span>Ваши пожелания нашему сервису:</span>{{data.message}}</li>
+    </ul>
+{% endif %}
+{% endblock %}
+
